@@ -41,10 +41,20 @@ final class AdvancedDateTests: XCTestCase {
     
     let endOfMonthDate = calendar.date(from: endOfMonthDateComponents)!
     
-    print(lastDayOfMonthDate)
-    print(endOfMonthDate.endOfMonth)
-    
     XCTAssertTrue(lastDayOfMonthDate == endOfMonthDate.endOfMonth)
+  }
+  
+  func testStartOfYearDate() {
+    let calendar = Calendar.current
+    
+    var startOfYearDateComponents = DateComponents()
+    startOfYearDateComponents.day = 1
+    startOfYearDateComponents.month = 1
+    startOfYearDateComponents.year = 2019
+    
+    let startOfYearDate = calendar.date(from: startOfYearDateComponents)!
+    
+    XCTAssertTrue(startOfYearDate == startOfYearDate.startOfYear)
   }
   
   static var allTests = [
