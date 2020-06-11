@@ -77,6 +77,12 @@ public extension Date {
     Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
   }
   
+  var startOfMonth: Date {
+    let calendar = Calendar.current
+    let firstDayOfMonthDateComponents = calendar.dateComponents([.month, .year], from: self)
+    return calendar.date(from: firstDayOfMonthDateComponents)!.startOfDay
+  }
+  
   var zeroSeconds: Date {
     let calendar = Calendar.current
     let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)

@@ -8,6 +8,19 @@ final class AdvancedDateTests: XCTestCase {
     // results.
   }
   
+  func testStartOfMonthDate() {
+    let calendar = Calendar.current
+    
+    var firstDayOfMonthDateComponents = DateComponents()
+    firstDayOfMonthDateComponents.day = 1
+    firstDayOfMonthDateComponents.month = 10
+    firstDayOfMonthDateComponents.year = 2019
+    
+    let firstDayOfMonthDate = calendar.date(from: firstDayOfMonthDateComponents)!
+    
+    XCTAssertTrue(firstDayOfMonthDate == firstDayOfMonthDate.startOfMonth)
+  }
+  
   static var allTests = [
     ("testExample", testExample),
   ]
