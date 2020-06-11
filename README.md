@@ -1,3 +1,3 @@
 # AdvancedDate
 
-A description of this package.
+Convenient work with Date in Swift. 
