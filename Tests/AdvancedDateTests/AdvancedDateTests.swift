@@ -57,6 +57,29 @@ final class AdvancedDateTests: XCTestCase {
     XCTAssertTrue(startOfYearDate == startOfYearDate.startOfYear)
   }
   
+  func testEndOfYearDate() {
+    let calendar = Calendar.current
+    
+    var lastDayOfYearDateComponents = DateComponents()
+    lastDayOfYearDateComponents.day = 31
+    lastDayOfYearDateComponents.month = 12
+    lastDayOfYearDateComponents.year = 2019
+    lastDayOfYearDateComponents.hour = 23
+    lastDayOfYearDateComponents.minute = 59
+    lastDayOfYearDateComponents.second = 59
+    
+    let lastDayOfYearDate = calendar.date(from: lastDayOfYearDateComponents)!
+    
+    var randomDayOfYearDateComponents = DateComponents()
+    randomDayOfYearDateComponents.day = 15
+    randomDayOfYearDateComponents.month = 8
+    randomDayOfYearDateComponents.year = 2019
+    
+    let testingEndOfYearDate = calendar.date(from: randomDayOfYearDateComponents)!.endOfYear
+    
+    XCTAssertTrue(lastDayOfYearDate == testingEndOfYearDate)
+  }
+  
   static var allTests = [
     ("testExample", testExample),
   ]

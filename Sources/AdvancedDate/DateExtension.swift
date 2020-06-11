@@ -96,6 +96,13 @@ public extension Date {
     return calendar.date(from: firstDayOfYearDateComponents)!
   }
   
+  // Returns time 23:59:59 of the last day of year
+  var endOfYear: Date {
+    let calendar = Calendar.current
+    let endOfYearDate = calendar.date(byAdding: .year, value: 1, to: startOfYear)!
+    return calendar.date(byAdding: .second, value: -1, to: endOfYearDate)!
+  }
+  
   var zeroSeconds: Date {
     let calendar = Calendar.current
     let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
