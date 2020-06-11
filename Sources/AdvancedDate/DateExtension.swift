@@ -83,6 +83,12 @@ public extension Date {
     return calendar.date(from: firstDayOfMonthDateComponents)!.startOfDay
   }
   
+  /// Returns time 23:59:59 of the last day of month
+  var endOfMonth: Date {
+    let firstDayOfNextMonth = Calendar.current.date(byAdding: .month, value: 1, to: startOfMonth)!
+    return Calendar.current.date(byAdding: .second, value: -1, to: firstDayOfNextMonth)!
+  }
+  
   var zeroSeconds: Date {
     let calendar = Calendar.current
     let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
