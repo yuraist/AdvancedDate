@@ -109,3 +109,56 @@ public extension Date {
     return calendar.date(from: dateComponents)!
   }
 }
+
+extension Int {
+  
+  /// Returns formatted localized string with number of days
+  var daysLocalized: String {
+    localizedPeriod(dateUnit: .day, number: self)
+  }
+  
+  /// Returns formatted localized string with number of weeks
+  var weeksLocalized: String {
+    localizedPeriod(dateUnit: .weekOfMonth, number: self)
+  }
+  
+  /// Returns formatted localized string with number of months
+  var monthsLocalized: String {
+    localizedPeriod(dateUnit: .month, number: self)
+  }
+  
+  /// Returns formatted localized string with number of years
+  var yearsLocalized: String {
+    localizedPeriod(dateUnit: .year, number: self)
+  }
+  
+  private func localizedPeriod(dateUnit: NSCalendar.Unit, number: Int) -> String {
+    let calendar = Calendar.current
+    let formatter = DateComponentsFormatter()
+    formatter.calendar = calendar
+    formatter.unitsStyle = .full
+    formatter.allowedUnits = [dateUnit]
+    
+    var dateComponents = DateComponents()
+    
+    switch dateUnit {
+    case .day:
+      dateComponents.day = number
+      
+    case .weekOfMonth, .weekOfYear:
+      dateComponents.weekOfMonth = number
+      
+    case .month:
+      dateComponents.month = number
+      
+    case .year:
+      dateComponents.year = number
+      
+    default:
+      break
+    }
+    
+    return formatter.string(from: dateComponents) ?? ""
+  }
+  
+}
